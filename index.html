@@ -5,10 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate Bangladesh</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+<style>
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
 
 <body>
     <header class="h-36">
@@ -38,7 +46,7 @@
 
 
     </header>
-    <main class="container m-auto">
+    <main id="mainSection" class="container m-auto">
 
         <!-- section for donation lists -->
         <section id="donateSection" class="mt-5 flex-col gap-5">
@@ -49,20 +57,20 @@
                         <div class="stats shadow w-fit">
                             <div class="stat flex items-center bg-gray-200 font-semibold text-lg">
                                 <img src="assets/coin.png" alt="coin" class="w-8 h-8">
-                                <span>0</span>
+                                <span id="noakhaliBalance">0</span>
                                 <span>BDT</span>
                             </div>
                         </div>
-                        <h2 class="card-title font-bold text-3xl">Donate for Flood at Noakhali, Bangladesh</h2>
+                        <h2 class="card-title font-bold text-3xl">Donate for Flood at <span id="titleNoakhali">Noakhali, Bangladesh</span></h2>
                         <p class="text-lg"> The recent floods in Noakhali have caused significant damage to homes
                             infrastructure. Your donation will help provide essential supplies and to those affected by
                             this disaster. Every contribution, big or small, makes difference. Please join us in
                             supporting the relief efforts and making a positive impact on the lives of those in need.
                         </p>
                         <div class="card-actions justify-end flex-col">
-                            <input type="text" placeholder="Write Donation Amount"
-                                class="input focus:outline-none w-full" />
-                            <button class="btn bg-lime-300 w-full">Donate Now</button>
+                            <input id="donateNoakhali" type="number" placeholder="Write Donation Amount"
+                                class="input focus:outline-none w-full m-0 appearance-none" />
+                            <button id="donateBtnNoakhali" class="btn bg-lime-300 w-full">Donate Now</button>
                         </div>
                     </div>
                 </div>
@@ -74,11 +82,11 @@
                         <div class="stats shadow w-fit">
                             <div class="stat flex items-center bg-gray-200 font-semibold text-lg">
                                 <img src="assets/coin.png" alt="coin" class="w-8 h-8">
-                                <span>600</span>
+                                <span id="feniBalance">600</span>
                                 <span>BDT</span>
                             </div>
                         </div>
-                        <h2 class="card-title font-bold text-3xl">Donate for Flood at Noakhali, Bangladesh</h2>
+                        <h2 class="card-title font-bold text-3xl">Donate for Flood at <span id="titleFeni">Feni, Bangladesh</span></h2>
                         <p class="text-lg"> The recent floods in Feni have devastated local communities, leading to
                             severe disruption and loss. Your generous donation will help provide immediate aid,
                             including food, clean water, and medical supplies, to those affected by this calamity.
@@ -87,9 +95,9 @@
                             donating today to assist those in urgent need.
                         </p>
                         <div class="card-actions justify-end flex-col">
-                            <input type="text" placeholder="Write Donation Amount"
+                            <input id="donateFeni" type="number" placeholder="Write Donation Amount"
                                 class="input focus:outline-none w-full" />
-                            <button class="btn bg-lime-300 w-full">Donate Now</button>
+                            <button id="donateBtnFeni" class="btn bg-lime-300 w-full">Donate Now</button>
                         </div>
                     </div>
                 </div>
@@ -101,11 +109,11 @@
                         <div class="stats shadow w-fit">
                             <div class="stat flex items-center bg-gray-200 font-semibold text-lg">
                                 <img src="assets/coin.png" alt="coin" class="w-8 h-8">
-                                <span>2400</span>
+                                <span id="quotaBalance">2400</span>
                                 <span>BDT</span>
                             </div>
                         </div>
-                        <h2 class="card-title font-bold text-3xl">Aid for Injured in the Quota Movement</h2>
+                        <h2 class="card-title font-bold text-3xl">Aid for Injured in the <span id="titleQuota">Quota Movement</span> </h2>
                         <p class="text-lg">The recent Quota movement has resulted in numerous injuries and significant
                             hardship for many individuals. Your support is crucial in providing medical assistance,
                             rehabilitation, and necessary supplies to those affected. By contributing, you help ensure
@@ -115,9 +123,9 @@
                             of need.
                         </p>
                         <div class="card-actions justify-end flex-col">
-                            <input type="text" placeholder="Write Donation Amount"
+                            <input id="donateQuota" type="number" placeholder="Write Donation Amount"
                                 class="input focus:outline-none w-full" />
-                            <button class="btn bg-lime-300 w-full">Donate Now</button>
+                            <button id="donateBtnQuota" class="btn bg-lime-300 w-full">Donate Now</button>
                         </div>
                     </div>
                 </div>
@@ -125,21 +133,34 @@
         </section>
         <!-- history section -->
         <section id="historySection" class="hidden mt-8">
-            <h2 class="text-center text-lg font-bold">Donation History</h2>
-            <div class="card card-border bg-base-100 w-full shadow-sm">
-                <div class="card-body">
-                    <h2 class="card-title">96500 Taka is Donated for famine-2024 at Feni, Bangladesh</h2>
-                    <p>Date : Tue Sep 17 2024 08:39:11 GMT +0600 (Bangladesh Standard Time)</p>
+            <h2 class="text-center text-3xl font-bold">Donation History</h2>
+        </section>
+        <!-- modal for successfull donation -->
+        <section>
+            <dialog id="modal" class="modal">
+                <div class="flex flex-col justify-center bg-white p-28 rounded-md">
+                    <h3 class="text-3xl font-bold text-center">Congrates!</h3>
+                    <img src="assets/coin.png" alt="coin" class="w-20 m-auto mt-4">
+                    <p class="py-4">You have donated for Humankind</p>
+                    <h2 class="text-center font-bold text-2xl">Successfully</h2>
+                    <div class="modal-action">
+                        <form method="dialog" class="w-full m-auto">
+                            <button class="btn bg-gray-300 px-10">Close Confirmation</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            </dialog>
         </section>
     </main>
     <!-- footer starts from here -->
     <footer class="footer bg-orange-50 h-24 mt-8">
     </footer>
     <!-- js are here -->
-     <!-- switch donation to History section -->
-     <script src="js/switch.js"></script>
+    <!-- switch donation to History section -->
+    <script src="js/switch.js"></script>
+    <script src="js/utilities.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/donate.js"></script>
 </body>
 
 </html>
