@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blog</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <header class="h-36">
+        <!-- navbar starts from here -->
+        <div class="nav-wrap fixed z-10 w-full backdrop-blur-sm">
+            <div class="navbar bg-orange-50 h-20">
+                <div class="navbar-start">
+                    <a href="index.html" class="btn bg-lime-300 p-6 text-lg">Home</a>
+                </div>
+                <div class="navbar-center flex gap-5">
+                    <img src="assets/logo.png" alt="logo" class="w-9"><a href="index.html"
+                        class="btn btn-ghost text-xl max-sm:hidden">Donate Bangladesh</a>
+                </div>
+                <div class="navbar-end">
+                    <div class="balance-status flex gap-2 font-semibold mr-3">
+                        <img src="assets/coin.png" alt=""><span id="main-balance">5500</span>
+                        <p>BDT</p>
+                    </div>
+                </div>
+            </div>
+            <!-- switch section where can switch between donation and history -->
+            <section id="switch" class="flex justify-center gap-10 mt-2 mb-2">
+                <div class="btn text-lg bg-lime-300 p-8">Donation</div>
+                <div class="btn text-lg p-8">History</div>
+            </section>
+        </div>
+
+
+    </header>
+    <main class="container m-auto">
+        <!-- facts are here -->
+        <section class="mt-5">
+            <div class="join join-vertical bg-base-100 w-full">
+                <div class="facts flex gap-5 items-center mb-6">
+                    <h1 class="font-extrabold md:text-3xl uppercase">Impontant Faq</h1><img src="assets/question.gif" alt="">
+                </div>
+                <div class="collapse collapse-arrow join-item border-base-300 border">
+                    <input type="radio" name="my-accordion-4" checked="checked" />
+                    <div class="collapse-title font-semibold">What is the Document Object Model(DOM)?</div>
+                    <div class="collapse-content text-sm">
+                        <input class="border-none outline-none" type="text" id="answer1" placeholder="Write your answer here..">
+                    </div>
+                </div>
+                <div class="collapse collapse-arrow join-item border-base-300 border">
+                    <input type="radio" name="my-accordion-4" checked="checked" />
+                    <div class="collapse-title font-semibold">How do you select a element from the DOM?</div>
+                    <div class="collapse-content text-sm">
+                        <input class="border-none outline-none" type="text" id="answer1" placeholder="Write your answer here..">
+                    </div>
+                </div>
+                <div class="collapse collapse-arrow join-item border-base-300 border">
+                    <input type="radio" name="my-accordion-4" checked="checked" />
+                    <div class="collapse-title font-semibold">What is event delegation in the context of the DOM, and why is it useful?</div>
+                    <div class="collapse-content text-sm">
+                        <input class="border-none outline-none" type="text" id="answer1" placeholder="Write your answer here..">
+                    </div>
+                </div>
+                <div class="collapse collapse-arrow join-item border-base-300 border">
+                    <input type="radio" name="my-accordion-4" checked="checked" />
+                    <div class="collapse-title font-semibold">How do you manipulate an element's attributes and styles using the DOM?</div>
+                    <div class="collapse-content text-sm">
+                        <input class="border-none outline-none" type="text" id="answer1" placeholder="Write your answer here..">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer bg-orange-50 h-24 mt-10">
+    </footer>
+</body>
+
+</html>
